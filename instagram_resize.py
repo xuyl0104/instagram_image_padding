@@ -1,4 +1,5 @@
 import sys
+import os.path
 from PIL import Image
 
 def expand2square(pil_img, background_color):
@@ -17,10 +18,10 @@ def expand2square(pil_img, background_color):
 if __name__ == '__main__':
     # folder of the images you want to pad
     folder = sys.argv[1]
-    # filename of the image you want to change ratio
-    image_to_be_resized = folder + "/" + sys.argv[2]
+    # filename of the image you want to change ratio    
+    image_to_be_resized = os.path.join(folder, sys.argv[2])
     # filename of the output image
-    image_to_be_saved = folder + "/" +  sys.argv[3]
+    image_to_be_saved = os.path.join(folder, sys.argv[3])
 
     # function calls
     im = Image.open(image_to_be_resized)

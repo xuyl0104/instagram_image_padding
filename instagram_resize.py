@@ -14,13 +14,15 @@ def expand2square(pil_img, background_color):
         result.paste(pil_img, ((height - width) // 2, 0))
         return result
 
-im = Image.open("./7.jpeg")
-im_new = expand2square(im, (0, 0, 0))
-im_new.save('./new7.jpeg', quality=100)
+if __name__ == '__main__':
+    # folder of the images you want to pad
+    folder = sys.argv[1]
+    # filename of the image you want to change ratio
+    image_to_be_resized = folder + "/" + sys.argv[2]
+    # filename of the output image
+    image_to_be_saved = folder + "/" +  sys.argv[3]
 
-
-# if __name__ == '__main__':
-#     # 待修改尺寸的图片的路径
-#     image_to_be_resized = sys.argv[1]
-#     # 修改尺寸后保存图片的名称
-#     image_to_be_saved = sys.argv[2]
+    # function calls
+    im = Image.open(image_to_be_resized)
+    im_new = expand2square(im, (0, 0, 0))
+    im_new.save(image_to_be_saved, quality=100)
